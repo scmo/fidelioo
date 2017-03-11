@@ -17,7 +17,8 @@ var users = {
       "address":"785 Woodridge Lane",
       "place":"Memphis",
       "state":"TN",
-      "zip":38141
+      "zip":38141,
+      "visits": [],
    },
    "2":{  
       "uid":2,
@@ -29,7 +30,8 @@ var users = {
       "address":"1863 Turkey Pen Road",
       "place":"Columbia",
       "state":"NY",
-      "zip":11206
+      "zip":11206,
+     "visits": [],
    },
    "3":{  
       "uid":3,
@@ -40,24 +42,44 @@ var users = {
       "cardnr":"44485 2646 8634 9331",
       "address":"509 Kemper Lane",
       "state":"NY",
-      "zip":11206
+      "zip":11206,
+     "visits": [],
    }
 };
 
+var usersInStore = []
+
 app.get('/', function(req, res){
-	console.log("asdfadsf");
   res.sendFile(__dirname + '/index.html');
 });
-app.get('/enter-store/', function(req, res){
 
+app.get('/enter-store/', function(req, res){
   res.sendFile(__dirname + '/mock-enter-store.html');
 });
 
+
 io.on('connection', function(socket){
   socket.on('enters store', function(uid){
-  	io.emit('person entered', users[uid]);
+    var user = users[uid];
+    user.isNew = true;
+    // setTimeout(toggleIsNew(), 500);
+    usersInStore.unshift(user);
+
+  	io.emit('person entered', usersInStore);
   });
 });
+
+// function toggleIsNew() {
+//   console.log("asdf");
+//   for (i = 0; i < usersInStore.length; i++) {
+//     // if (usersInStore[i].isNew){
+//     //   usersInStore[i].isNew = false;
+//     //   console.log(usersInStore);
+//     // }
+//   }
+// }
+
+
 
 http.listen(port, function(){
   console.log('listening on *:' + port);

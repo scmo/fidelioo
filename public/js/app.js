@@ -1,7 +1,8 @@
 $(function () {
 	var socket = io();
 	socket.on('person entered', function(users){
-		var str = JSON.stringify(user);
+		var str = JSON.stringify(users);
+		console.log(str);
 	//$('#user').text(str);
 
 		for ( i = 0; i<users.length; i++) {
