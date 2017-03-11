@@ -33,7 +33,7 @@ joy = {
   "place": "Zug",
   "state": "YG",
   "zip": 1126,
-  "visits": [1468255158, 1486831158],
+  "visits": [1486831158, 1468255158],
 };
 christ = {
   "uid": 3,
@@ -46,7 +46,7 @@ christ = {
   "place": "Zurich",
   "state": "ZH",
   "zip": 1206,
-  "visits": [1457714358, 1481474358],
+  "visits": [1481474358, 1457714358],
 };
 
 users.push(john);
