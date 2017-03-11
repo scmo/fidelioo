@@ -79,6 +79,7 @@ h1 {
   margin:0;
   border-bottom: 1px solid #EDEDED;
   overflow:auto;
+  cursor: pointer;
 }
 
 .user-wrapper.active {
@@ -101,9 +102,19 @@ h1 {
 }
 
 .user-description-wrapper {
-  width: 75%;
-  float: right;
+  width: 50%;
+  float: left;
   padding: 15px;
+}
+
+.badge-newcustomer {
+  padding: 15px;
+  width: 25%
+  float:left;
+}
+
+.badge-newcustomer img{
+  height: 50px;
 }
 
 .user-details-wrapper {
