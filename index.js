@@ -66,6 +66,17 @@ app.get('/customers/', function (req, res) {
   res.json(usersInStore);
 });
 
+app.post('/clearCustomers/', function (req, res) {
+
+  usersInStore = []
+  io.emit('person entered', usersInStore);
+  res.json({status: "ok"});
+});
+
+app.get('/allcustomers/', function (req, res) {
+  res.json(users);
+});
+
 io.on('connection', function (socket) {
   socket.on('enters store', function (uid) {
 
@@ -97,12 +108,12 @@ function addUser(user) {
   }
   user.isNew = true;
   user.arrivedAt = moment().unix();
-  usersInStore.push(user);
+  usersInStore.unshift(user);
 }
 
-function removeUser() {
+function removeUser(uid) {
   for (i = 0; i < usersInStore.length; i++) {
-    if (usersInStore[i].uid == user.uid) {
+    if (usersInStore[i].uid == uid) {
       if (i > -1) {
         usersInStore.splice(i, 1);
       }
