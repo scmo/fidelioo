@@ -7,48 +7,51 @@ var moment = require('moment');
 
 app.use(express.static('public'));
 
-var users = {
-  "1": {
-    "uid": 1,
-    "lastname": "John",
-    "prename": "Davis",
-    "phone": "708-713-7227",
-    "birthdate": 570286784,
-    "cardnr": "4916 1653 6574 2028",
-    "address": "Moosstrasse 71",
-    "place": "Altdorf",
-    "state": "AR",
-    "zip": 3141,
-    "visits": [],
-  },
-  "2": {
-    "uid": 2,
-    "lastname": "Joy",
-    "prename": "Nanney",
-    "phone": "917-243-7338",
-    "birthdate": 662734784,
-    "cardnr": "4929 8887 7502 6543",
-    "address": "Dorfweg 7",
-    "place": "Zug",
-    "state": "YG",
-    "zip": 1126,
-    "visits": [1468255158, 1486831158],
-  },
-  "3": {
-    "uid": 3,
-    "lastname": "Stephen",
-    "prename": "Christensen",
-    "phone": "708-713-7227",
-    "birthdate": 11358016,
-    "cardnr": "44485 2646 8634 9331",
-    "address": "Schiffbau",
-    "place": "Zurich",
-    "state": "ZH",
-    "zip": 1206,
-    "visits": [1457714358, 1481474358],
-  }
+var users = [];
+john = {
+  "uid": 1,
+  "lastname": "John",
+  "prename": "Davis",
+  "phone": "708-713-7227",
+  "birthdate": 570286784,
+  "cardnr": "4916 1653 6574 2028",
+  "address": "Moosstrasse 71",
+  "place": "Altdorf",
+  "state": "AR",
+  "zip": 3141,
+  "visits": [],
 };
 
+joy = {
+  "uid": 2,
+  "lastname": "Joy",
+  "prename": "Nanney",
+  "phone": "917-243-7338",
+  "birthdate": 662734784,
+  "cardnr": "4929 8887 7502 6543",
+  "address": "Dorfweg 7",
+  "place": "Zug",
+  "state": "YG",
+  "zip": 1126,
+  "visits": [1468255158, 1486831158],
+};
+christ = {
+  "uid": 3,
+  "lastname": "Stephen",
+  "prename": "Christensen",
+  "phone": "708-713-7227",
+  "birthdate": 11358016,
+  "cardnr": "44485 2646 8634 9331",
+  "address": "Schiffbau",
+  "place": "Zurich",
+  "state": "ZH",
+  "zip": 1206,
+  "visits": [1457714358, 1481474358],
+};
+
+users.push(john);
+users.push(joy);
+users.push(christ);
 var usersInStore = []
 
 app.get('/', function (req, res) {
@@ -65,7 +68,8 @@ app.get('/customers/', function (req, res) {
 
 io.on('connection', function (socket) {
   socket.on('enters store', function (uid) {
-    var user = users[uid];
+
+    var user = getUser(uid);
     addUser(user);
     io.emit('person entered', usersInStore);
   });
@@ -76,22 +80,29 @@ io.on('connection', function (socket) {
   });
 });
 
+function getUser(uid) {
+  for (i = 0; i < users.length; i++) {
+    if (users[i].uid == uid) {
+      return users[i];
+    }
+  }
+  return null;
+}
 
 function addUser(user) {
   for (i = 0; i < usersInStore.length; i++) {
-    if (usersInStore[i].uid = user.uid) {
+    if (usersInStore[i].uid == user.uid) {
       return;
     }
   }
   user.isNew = true;
   user.arrivedAt = moment().unix();
-
-  usersInStore.unshift(user);
+  usersInStore.push(user);
 }
 
-function removeUser(){
+function removeUser() {
   for (i = 0; i < usersInStore.length; i++) {
-    if (usersInStore[i].uid = user.uid) {
+    if (usersInStore[i].uid == user.uid) {
       if (i > -1) {
         usersInStore.splice(i, 1);
       }
