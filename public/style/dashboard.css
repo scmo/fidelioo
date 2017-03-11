@@ -77,12 +77,23 @@ h1 {
   width: 100%;
   margin:0;
   border-bottom: 1px solid #EDEDED;
-  overflow:auto;
   cursor: pointer;
+  position: relative;
+  z-index: 5;
 }
+
+
 
 .user-wrapper.active {
   background-color: #EDEBE6;
+}
+
+.user-wrapper:hover {
+  background-color: #ecf0f1;
+}
+
+.user-wrapper.active:hover {
+  background-color: #D7E2C9;
 }
 
 .user-foto-wrapper {
@@ -101,22 +112,28 @@ h1 {
 }
 
 .user-description-wrapper {
-  width: 50%;
+  width: 75%;
   float: left;
   padding: 15px;
+  font-size: 19px;
 }
 
 .badge-newcustomer {
-  padding: 15px;
-  width: 25%
-  float:left;
+  padding-top: 5px;
 }
 
-.badge-newcustomer img{
-  height: 50px;
+.firsttimeuserbadge{
+  display: none;
 }
+
+.last-visit {
+  font-size: 14px;
+  display: none;
+}
+
 
 .user-details-wrapper {
   clear: both;
   padding: 15px;
+  display: none;
 }

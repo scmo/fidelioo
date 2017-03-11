@@ -1,6 +1,7 @@
 
 function loadCustomersInStore(customers) {
   var str = JSON.stringify(customers);
+		$('.userinstore-wrapper').empty();
 		console.log(str);
 	//$('#user').text(str);
 
@@ -8,24 +9,41 @@ function loadCustomersInStore(customers) {
 
 
 			var isNewCustomer = false;
-			if(customers[0].visits.length == 0) {
+			if(customers[i].visits.length == 0) {
 				isNewCustomer = true;
 			}
-			$('.userinstore-wrapper').append('<div class="user-wrapper"> <div> <div class="user-foto-wrapper"> <img src="./img/user/1.png"> </div> <div class="user-description-wrapper">'+ customers[0].prename +' '+ customers[0].lastname +'</div><div class="badge-newcustomer"><img src="./img/new_badge.png"></div> <br style="clear: left;" /> </div> <div class="user-details-wrapper">Last Visit: 14.3.2017 14:30</div> </div>');
+			$('.userinstore-wrapper').append('<div class="user-wrapper"> <div style="position: relative; z-index:1;"> <div class="user-foto-wrapper"> <img src="./img/user/1.png"> </div> <div class="user-description-wrapper">'+ customers[i].prename +' '+ customers[i].lastname +'<div class="badge-newcustomer"><span class="badge badge-success firsttimeuserbadge">First Time Visitor</span><span class="last-visit">Last Visit: 14.3.2017 14:30</span></div></div><br style="clear: left;" /> </div> <div class="user-details-wrapper">Number of past visits: '+ customers[i].visits.length +'<br>Arrived: '+ moment(customers[i].arrivedAt).format('MM/DD/YYYY') +'</div> </div>');
 			
-			if (customers[0].isNew = true) {
-				$('.user-wrapper').addClass('active');
+			if (customers[i].isNew == true) {
+				console.log("new");
+				$('.user-wrapper').last().addClass('active');
+			} else {
+				console.log("not new");
+				$('.user-wrapper').last().removeClass('active');
+			}
+			
+			if (isNewCustomer == true) {
+				$('.last-visit').last().hide();
+				$('.firsttimeuserbadge').last().show();
+			} else {
+				$('.last-visit').last().show();
+				$('.firsttimeuserbadge').last().hide();
 			}
 
-			if (isNewCustomer = true) {
-				$('.badge-newcustomer').show();
-			}
+
+			
 		}
 }
 
 $( document ).ready(function() {
 	$.get( "/customers/", function( customers ) {
+		console.log(customers);
 		loadCustomersInStore(customers);
+	});
+
+
+	$(document).on('click', '.user-wrapper', function(){
+		$(this).find(".user-details-wrapper").toggle();
 	});
 });
 
