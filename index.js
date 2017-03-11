@@ -10,8 +10,8 @@ app.use(express.static('public'));
 var users = [];
 john = {
   "uid": 1,
-  "lastname": "John",
-  "prename": "Davis",
+  "prename": "John",
+  "lastname": "Davis",
   "phone": "708-713-7227",
   "birthdate": 570286784,
   "cardnr": "4916 1653 6574 2028",
@@ -24,8 +24,8 @@ john = {
 
 joy = {
   "uid": 2,
-  "lastname": "Joy",
-  "prename": "Nanney",
+  "prename": "Joy",
+  "lastname": "Nanney",
   "phone": "917-243-7338",
   "birthdate": 662734784,
   "cardnr": "4929 8887 7502 6543",
@@ -37,10 +37,10 @@ joy = {
 };
 christ = {
   "uid": 3,
-  "lastname": "Stephen",
-  "prename": "Christensen",
+  "prename": "Stephen",
+  "lastname": "Zurbriggen",
   "phone": "708-713-7227",
-  "birthdate": 11358016,
+  "birthdate": 1489280400,
   "cardnr": "44485 2646 8634 9331",
   "address": "Schiffbau",
   "place": "Zurich",
