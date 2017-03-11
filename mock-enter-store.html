@@ -1,28 +1,113 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-     
-    </style>
-    <link href="./style/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <button class='btn' data-uid="1">Joel enters store</button>
-    <button class='btn' data-uid="2">Joel enters store</button>
-    <button class='btn' data-uid="3">Joel enters store</button>
+<head>
+  <title>Socket.IO chat</title>
+  <style>
+    .top30 {
+      margin-top: 30px;
+    }
+  </style>
+  <link href="./style/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h2>Master your store</h2>
+  <div id="customers">
 
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      $(function () {
-        var socket = io();
+  </div>
+  <div class="row top30">
+    <button id='clearstore' class="btn btn-danger">Empty store</button>
+  </div>
+</div>
 
-        $('.btn').click(function(){
-          var uid = $(this).data("uid");
-          socket.emit('enters store', uid);
-        });
+
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+  $(document).ready(function () {
+    var socket = io();
+    $.get("/allcustomers/", function (customers) {
+
+      for (i = 0; i < customers.length; i++) {
+        var customer = customers[i];
+        var row = document.createElement('div');
+        var div1 = document.createElement('div');
+        var div2 = document.createElement('div');
+
+        $(row).addClass("row top30")
+        $(div1).addClass("col-sm-4").text(customer.prename + ' ' + customer.lastname);
+
+        $(div2).addClass("col-sm-4")
+
+        var addBtn = $('<button/>',
+            {text: 'Enter Store', 'data-uid': customer.uid, class: 'btn add btn-primary'});
+
+        $(div2).append(addBtn)
+
+        var rmBtn = $('<button/>',
+            {text: 'Leave Store', 'data-uid': customer.uid, class: 'btn btn-warning remove'});
+        $(div2).append(rmBtn)
+
+        $(row).append(div1);
+        $(row).append(div2);
+
+        $("#customers").append(row);
+      }
+
+      $("button.add").on("click", function () {
+        var uid = $(this).data("uid");
+        socket.emit('enters store', uid);
       });
-    </script>
-  </body>
+
+      $("button.remove").on("click", function () {
+        var uid = $(this).data("uid");
+        socket.emit('left store', uid);
+      });
+    });
+  });
+
+  $(document).ready(function () {
+    $("#clearstore").on("click", function () {
+      $.post("/clearCustomers", {});
+    });
+
+    $.get("/customers/", function (customers) {
+      hideButtons(customers);
+    });
+  });
+
+  $(function () {
+    var socket = io();
+    socket.on('person entered', function (customers) {
+      hideButtons(customers);
+    });
+  });
+
+  function hideButtons(customers) {
+    $('.remove').each(function () {
+      $(this).hide();
+
+    });
+    $('.add').each(function () {
+      $(this).show();
+    });
+
+    for (i = 0; i < customers.length; i++) {
+      $('.add').each(function () {
+        if ($(this).data('uid') == customers[i].uid) {
+          $(this).toggle();
+        }
+      });
+
+      $('.remove').each(function () {
+        if ($(this).data('uid') == customers[i].uid) {
+          $(this).toggle();
+        }
+      });
+
+    }
+  }
+
+</script>
+</body>
 </html>
