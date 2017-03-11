@@ -12,7 +12,7 @@ function loadCustomersInStore(customers) {
 			if(customers[i].visits.length == 0) {
 				isNewCustomer = true;
 			}
-			$('.userinstore-wrapper').append('<div class="user-wrapper"> <div style="position: relative; z-index:1;"> <div class="user-foto-wrapper"> <img src="./img/user/1.png"> </div> <div class="user-description-wrapper">'+ customers[i].prename +' '+ customers[i].lastname +'<div class="badge-newcustomer"><span class="badge badge-success firsttimeuserbadge">First Time Visitor</span><span class="last-visit">Last Visit: 14.3.2017 14:30</span></div></div><br style="clear: left;" /> </div> <div class="user-details-wrapper">Number of past visits: '+ customers[i].visits.length +'<br>Arrived: '+ moment(customers[i].arrivedAt).format('MM/DD/YYYY') +'</div> </div>');
+			$('.userinstore-wrapper').append('<div class="user-wrapper"> <div style="position: relative; z-index:1;"> <div class="user-foto-wrapper"> <img src="./img/user/1.png"> </div> <div class="user-description-wrapper">'+ customers[i].prename +' '+ customers[i].lastname +'<div class="badge-newcustomer"><span class="badge badge-success firsttimeuserbadge">First Time Visitor</span><span class="last-visit">Last Visit: '+ moment.unix((customers[i].arrivedAt)).format('MM/DD/YYYY') +'</span></div></div><br style="clear: left;" /> </div> <div class="user-details-wrapper">Number of past visits: '+ customers[i].visits.length +'<br>Arrived: '+ moment.unix((customers[i].arrivedAt)).format('MM/DD/YYYY') +'</div> </div>');
 			
 			if (customers[i].isNew == true) {
 				console.log("new");
