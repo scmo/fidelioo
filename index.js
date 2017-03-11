@@ -3,6 +3,7 @@ var app = express()
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
+var moment = require('moment');
 
 app.use(express.static('public'));
 
@@ -31,7 +32,7 @@ var users = {
       "place":"Columbia",
       "state":"NY",
       "zip":11206,
-     "visits": [],
+      "visits": [],
    },
    "3":{  
       "uid":3,
@@ -57,13 +58,17 @@ app.get('/enter-store/', function(req, res){
   res.sendFile(__dirname + '/mock-enter-store.html');
 });
 
+app.get('/users/', function(req, res){
+  res.json(usersInStore);
+});
+
 
 io.on('connection', function(socket){
   socket.on('enters store', function(uid){
     var user = users[uid];
-    user.isNew = true;
+
     // setTimeout(toggleIsNew(), 500);
-    usersInStore.unshift(user);
+    addUser(user);
 
   	io.emit('person entered', usersInStore);
   });
@@ -79,7 +84,30 @@ io.on('connection', function(socket){
 //   }
 // }
 
+function addUser(user){
+  for (i = 0; i < usersInStore.length; i++) {
+    if (usersInStore[i].uid = user.uid){
+      return;
+    }
+  }
+  user.isNew = true;
+  user.arrivedAt = moment().unix();
 
+  usersInStore.unshift(user);
+}
+
+var minutes = 2, the_interval = minutes * 60 * 1000;
+setInterval(function() {
+  console.log("I am doing my 5 minutes check");
+  // do your stuff here
+  for (i = 0; i < usersInStore.length; i++) {
+    if (usersInStore[i].isNew = true && usersInStore[i].arrivedAt
+            < moment().subtract(5, "minutes")) {
+      usersInStore[i].isNew = false;
+    }
+  }
+  io.emit('person entered', usersInStore);
+}, the_interval);
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
