@@ -72,6 +72,35 @@ h1 {
 
 
 /* Custom */
+
+/*left*/
+.productsortiment-wrapper {
+ float: none; /* not needed, just for clarification */
+    background: #e8f6fe;
+    /* the next props are meant to keep this block independent from the other floated one */
+    width: auto;
+    overflow: hidden;
+    margin-right: 423px;
+}
+
+.productsortiment-wrapper img {
+  width: 100%;
+}
+
+/*right*/
+.bill-wrapper {
+   width: 423px;
+    float: right;
+    background: #aafed6;
+    border-right: #D4D4D3 solid 1px;
+}
+
+.paybutton-wrapper {
+  position: absolute;
+  bottom: 0;
+}
+
+
 .user-wrapper {
   background-color: white;
   width: 100%;
@@ -80,12 +109,14 @@ h1 {
   cursor: pointer;
   position: relative;
   z-index: 5;
+  border-left: #D4D4D3 solid 1px;
 }
 
 
 
 .user-wrapper.active {
   background-color: #EDEBE6;
+  border-bottom: #99CABA 1px solid;
 }
 
 .user-wrapper:hover {
@@ -127,7 +158,7 @@ h1 {
 }
 
 .last-visit {
-  font-size: 14px;
+  font-size: 15px;
   display: none;
 }
 
@@ -137,3 +168,77 @@ h1 {
   padding: 15px;
   display: none;
 }
+
+.paybutton-wrapper {
+  cursor: pointer;
+}
+
+.overlay-background {
+ display: none;
+  background: rgba(1,1,1,0.7); /* newer browsers */; 
+  width:      100%;
+  height:     100%; 
+  z-index:    10;
+  top:        0; 
+  left:       0; 
+  position:   fixed; 
+}
+
+.popup-wrapper {
+  background-color: white;
+  height: 470px;
+  width: 602px;
+  opacity: 1; 
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+.popup-wrapper table {
+  width: 100%;
+  height: 400px;
+  background-color: #EDEBE6;
+}
+
+.popup-wrapper table td {
+  text-align:center; 
+  vertical-align:middle;
+  padding: 0;
+  margin:0;
+  height: 200px;
+  width: 200px;
+  background-color: #EDEBE6;
+  cursor: pointer;
+  position:relative;
+}
+
+.popup-wrapper table td:hover{
+  background-color: #99CABA;
+}
+
+
+.continuewithoutvoucherbutton {
+  cursor: pointer;
+  width: 100%; height:70px; background-color: #D3643B; color: white; text-align: center;
+  vertical-align: middle;
+  line-height: 70px;       /* the same as your div height */"
+ 
+}
+
+.continuewithoutvoucherbutton:hover {
+  background-color: #B85733;
+}
+
+.img2 {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
+
+
+

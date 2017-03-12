@@ -12,7 +12,7 @@ function loadCustomersInStore(customers) {
 			if(customers[i].visits.length == 0) {
 				isNewCustomer = true;
 			}
-			$('.userinstore-wrapper').append('<div class="user-wrapper"> <div style="position: relative; z-index:1;"> <div class="user-foto-wrapper"> <img src="./img/user/1.png"> </div> <div class="user-description-wrapper">'+ customers[i].prename +' '+ customers[i].lastname +'<div class="badge-newcustomer"><span class="badge badge-success firsttimeuserbadge">First Time Visitor</span><span class="last-visit">Last Visit: '+ moment.unix((customers[i].arrivedAt)).format('MM/DD/YYYY') +'</span></div></div><br style="clear: left;" /> </div> <div class="user-details-wrapper">Number of past visits: '+ customers[i].visits.length +'<br>Arrived: '+ moment.unix((customers[i].arrivedAt)).format('MM/DD/YYYY') +'</div> </div>');
+			$('.userinstore-wrapper').append('<div class="user-wrapper"> <div style="position: relative; z-index:1;"> <div class="user-foto-wrapper"> <img src="./img/user/'+ customers[i].uid +'.png"> </div> <div class="user-description-wrapper">'+ customers[i].prename +' '+ customers[i].lastname +'<div class="badge-newcustomer"><span class="badge badge-success firsttimeuserbadge">First Time Visitor</span><span class="last-visit">Last Visit: '+ moment.unix((customers[i].visits[0])).format('MM.DD.YYYY') +'</span></div></div><br style="clear: left;" /> </div> <div class="user-details-wrapper">Arrived: '+ moment.unix((customers[i].arrivedAt)).format('HH:mm') +'<br>Number of past visits: '+ customers[i].visits.length +'<br>Birthday '+ moment.unix((customers[i].birthdate)).format('MM.DD.YYYY') +'<br></div> </div>');
 			
 			if (customers[i].isNew == true) {
 				console.log("new");
@@ -44,6 +44,25 @@ $( document ).ready(function() {
 
 	$(document).on('click', '.user-wrapper', function(){
 		$(this).find(".user-details-wrapper").toggle();
+	});
+
+	$(document).on('click', '.paybutton-wrapper', function(){
+		$('.overlay-background').show();
+	});
+
+	$(document).on('click', '.continuewithoutvoucherbutton', function(){
+		$('.overlay-background').hide();
+	});
+
+	$(document).on('click', '.popup-wrapper table td', function(){
+		$(this).find('.img2').show();
+		setTimeout(function(){
+			$('.overlay-background').hide();
+			$('.img2').hide();
+			$('#bill-image').hide();
+			$('#paybutton-image').hide();
+	}, 800);
+		
 	});
 });
 

@@ -37,8 +37,8 @@ joy = {
 };
 christ = {
   "uid": 3,
-  "prename": "Stephen",
-  "lastname": "Zurbriggen",
+  "prename": "Tristan",
+  "lastname": "Walker",
   "phone": "708-713-7227",
   "birthdate": 1489280400,
   "cardnr": "44485 2646 8634 9331",

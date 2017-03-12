@@ -19,6 +19,7 @@
   </head>
 
   <body data-gr-c-s-loaded="true">
+
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,20 +50,67 @@
 
     <div class="container-fluid" style="padding-top: 5px;">
       <div class="row">
-        <div class="col-9" style="background-color: #F3F2F2; height: 100%">
-          <img src="./img/pos.png" style="width: 100%">
+        <div class="col-9" style="background-color: #F3F2F2; height: 100%; height: auto; overflow: hidden; padding-right: 0px">
+          <div class="bill-wrapper">
+            <div class="basket-wrapper">
+              <img id="bill-image" src="./img/bill.png">
+            </div>
+            <div class="paybutton-wrapper">
+              <img id="paybutton-image" src="./img/paybutton.png">
+            </div>
+          </div>
+          <div class="productsortiment-wrapper">
+            <img src="./img/products.png">
+          </div>
         </div>
-        <div class="col-3 userinstore-wrapper" style="padding: 0;">
           
-       
-
-
+          <br style="clear: left;" />
+          
+        <div class="col-3 userinstore-wrapper" style="padding: 0;">
 
         </div>
 
-     
+      
     </div>
 
+    <div class="overlay-background">
+      <div class="popup-wrapper">
+        <table>
+        <tbody>
+          <tr style="border-bottom: 1px solid #98948E;">
+            <td style="border-right: 1px solid #98948E;"> 
+              <img src="./img/voucher/hackerheaven.png">
+               <img src="./img/voucher/voucheroverlay.png"  class="img2">
+            </td>
+            <td style="border-right: 1px solid #98948E;"> 
+              <img src="./img/voucher/bakey.png">
+               <img src="./img/voucher/voucheroverlay.png"  class="img2">
+            </td>
+            <td> 
+              <img src="./img/voucher/spookybooks.png">
+               <img src="./img/voucher/voucheroverlay.png"  class="img2">
+            </td>
+          </tr>
+          <tr>
+            <td style="border-right: 1px solid #98948E;"> 
+              <img src="./img/voucher/burger.png">
+               <img src="./img/voucher/voucheroverlay.png"  class="img2">
+            </td>
+            <td style="border-right: 1px solid #98948E;"> 
+              <img src="./img/voucher/bouquet.png">
+               <img src="./img/voucher/voucheroverlay.png"  class="img2">
+            </td>
+            <td> 
+              <img src="./img/voucher/bio.png">
+              <img src="./img/voucher/voucheroverlay.png"  class="img2">
+            </td>
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+       <div class="continuewithoutvoucherbutton">CONTINUE WITHOUT VOUCHER</div>
+      </div> 
+    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
