@@ -12,8 +12,18 @@ function loadCustomersInStore(customers) {
 			if(customers[i].visits.length == 0) {
 				isNewCustomer = true;
 			}
-			$('.userinstore-wrapper').append('<div class="user-wrapper"> <div style="position: relative; z-index:1;"> <div class="user-foto-wrapper"> <img src="./img/user/'+ customers[i].uid +'.png"> </div> <div class="user-description-wrapper">'+ customers[i].prename +' '+ customers[i].lastname +'<div class="badge-newcustomer"><span class="badge badge-success firsttimeuserbadge">First Time Visitor</span><span class="last-visit">Last Visit: '+ moment.unix((customers[i].visits[0])).format('MM.DD.YYYY') +'</span></div></div><br style="clear: left;" /> </div> <div class="user-details-wrapper">Arrived: '+ moment.unix((customers[i].arrivedAt)).format('HH:mm') +'<br>Number of past visits: '+ customers[i].visits.length +'<br>Birthday '+ moment.unix((customers[i].birthdate)).format('MM.DD.YYYY') +'<br></div> </div>');
-			
+
+      var userWrapper = $('<div/>', {class: 'user-wrapper'});
+      userWrapper.append('<div style="position: relative; z-index:1;"> <div class="user-foto-wrapper"> <img src="./img/user/'+ customers[i].uid +'.png"> </div> <div class="user-description-wrapper">'+ customers[i].prename +' '+ customers[i].lastname +'<div class="badge-newcustomer"><span class="badge badge-success firsttimeuserbadge">First Time Visitor</span><span class="last-visit">Last Visit: '+ moment.unix((customers[i].visits[0])).format('MM.DD.YYYY') +'</span></div></div><br style="clear: left;" /> </div> <div class="user-details-wrapper">Arrived: '+ moment.unix((customers[i].arrivedAt)).format('HH:mm') +'<br>Number of past visits: '+ customers[i].visits.length +'<br>Birthday '+ moment.unix((customers[i].birthdate)).format('MM.DD.YYYY') +'<br></div>');
+
+       if (customers[i].justEntered){
+         userWrapper.addClass( "just-entered" );
+      }
+      $('.userinstore-wrapper').append(userWrapper);
+      $('div.just-entered').css("display", "none");
+      $('div.just-entered').slideDown();
+
+
 			if (customers[i].isNew == true) {
 				console.log("new");
 				$('.user-wrapper').last().addClass('active');
@@ -21,7 +31,7 @@ function loadCustomersInStore(customers) {
 				console.log("not new");
 				$('.user-wrapper').last().removeClass('active');
 			}
-			
+
 			if (isNewCustomer == true) {
 				$('.last-visit').last().hide();
 				$('.firsttimeuserbadge').last().show();
@@ -31,7 +41,7 @@ function loadCustomersInStore(customers) {
 			}
 
 
-			
+
 		}
 }
 
@@ -62,7 +72,7 @@ $( document ).ready(function() {
 			$('#bill-image').hide();
 			$('#paybutton-image').hide();
 	}, 800);
-		
+
 	});
 });
 

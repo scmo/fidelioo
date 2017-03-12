@@ -81,7 +81,15 @@ io.on('connection', function (socket) {
   socket.on('enters store', function (uid) {
 
     var user = getUser(uid);
+
     addUser(user);
+
+    for (i = 0; i < usersInStore.length; i++) {
+      usersInStore[i].justEntered = false;
+      if (usersInStore[i].uid == uid) {
+        usersInStore[i].justEntered = true;
+      }
+    }
     io.emit('person entered', usersInStore);
   });
 
@@ -113,11 +121,11 @@ function addUser(user) {
 
 function removeUser(uid) {
   for (i = 0; i < usersInStore.length; i++) {
+    usersInStore[i].justEntered = false;
     if (usersInStore[i].uid == uid) {
       if (i > -1) {
         usersInStore.splice(i, 1);
       }
-      return
     }
   }
 }
