@@ -3,9 +3,15 @@
  */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
+
+html {
+  height: 100%;
+}
+
 body {
   padding-top: 50px;
   font-family: 'Roboto', sans-serif;
+  height: 100%;
 }
 
 /*
@@ -80,7 +86,7 @@ h1 {
     /* the next props are meant to keep this block independent from the other floated one */
     width: auto;
     overflow: hidden;
-    margin-right: 423px;
+    margin-right: 350px;
 }
 
 .productsortiment-wrapper img {
@@ -88,11 +94,15 @@ h1 {
 }
 
 /*right*/
+.maincontainer-wrapper {
+  height: 100%
+}
+
+
 .bill-wrapper {
-   width: 423px;
+    width: 350px;
     float: right;
     background: #aafed6;
-    border-right: #D4D4D3 solid 1px;
 }
 
 .paybutton-wrapper {
@@ -109,10 +119,12 @@ h1 {
   cursor: pointer;
   position: relative;
   z-index: 5;
-  border-left: #D4D4D3 solid 1px;
 }
 
-
+.userinstore-wrapper {
+  height: 100%;
+  border-left: #D4D4D3 solid 1px;
+}
 
 .user-wrapper.active {
   background-color: #EDEBE6;
@@ -223,9 +235,10 @@ h1 {
 
 .continuewithoutvoucherbutton {
   cursor: pointer;
-  width: 100%; height:70px; background-color: #D3643B; color: white; text-align: center;
+  width: 100%; height:70px; background-color: #98948E; color: white; text-align: center;
   vertical-align: middle;
   line-height: 70px;       /* the same as your div height */"
+  letter-spacing: 1px;
  
 }
 

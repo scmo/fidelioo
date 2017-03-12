@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+
+    <title>Fidelioo</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./style/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +16,14 @@
     <link href="./style/dashboard.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./img/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
   </head>
 
   <body data-gr-c-s-loaded="true">
@@ -24,15 +32,15 @@
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="https://v4-alpha.getbootstrap.com/examples/dashboard/#">Fidelioo Shop Admin</a>
+      <a class="navbar-brand" href="https://v4-alpha.getbootstrap.com/examples/dashboard/#"><img id="logo" height="25px" src="./img/logo.png"></a>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/dashboard/#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/dashboard/#">Checkout <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/dashboard/#">Settings</a>
+            <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/dashboard/#">Analytics</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/dashboard/#">Profile</a>
@@ -42,21 +50,20 @@
           </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <span style="color:white">Logged in as: Spooky Books</span>
         </form>
       </div>
     </nav>
 
-    <div class="container-fluid" style="padding-top: 5px;">
-      <div class="row">
+    <div class="container-fluid" style="padding-top: 5px; height: 100%">
+      <div class="row maincontainer-wrapper">
         <div class="col-9" style="background-color: #F3F2F2; height: 100%; height: auto; overflow: hidden; padding-right: 0px">
           <div class="bill-wrapper">
             <div class="basket-wrapper">
-              <img id="bill-image" src="./img/bill.png">
+              <img id="bill-image" src="./img/bill_small.png">
             </div>
             <div class="paybutton-wrapper">
-              <img id="paybutton-image" src="./img/paybutton.png">
+              <img id="paybutton-image" src="./img/paybutton_small.png">
             </div>
           </div>
           <div class="productsortiment-wrapper">
@@ -67,7 +74,7 @@
           <br style="clear: left;" />
           
         <div class="col-3 userinstore-wrapper" style="padding: 0;">
-
+          <div style="background-color:#95a5a6; padding: 15px; color: white; font-size: 18px; letter-spacing: 1px;">Customers in store</div>
         </div>
 
       

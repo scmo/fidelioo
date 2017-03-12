@@ -1,7 +1,7 @@
 
 function loadCustomersInStore(customers) {
   var str = JSON.stringify(customers);
-		$('.userinstore-wrapper').empty();
+		$('.user-wrapper').remove();
 		console.log(str);
 	//$('#user').text(str);
 
@@ -12,6 +12,7 @@ function loadCustomersInStore(customers) {
 			if(customers[i].visits.length == 0) {
 				isNewCustomer = true;
 			}
+
 			$('.userinstore-wrapper').append('<div class="user-wrapper"> <div style="position: relative; z-index:1;"> <div class="user-foto-wrapper"> <img src="./img/user/'+ customers[i].uid +'.png"> </div> <div class="user-description-wrapper">'+ customers[i].prename +' '+ customers[i].lastname +'<div class="badge-newcustomer"><span class="badge badge-success firsttimeuserbadge">First Time Visitor</span><span class="last-visit">Last Visit: '+ moment.unix((customers[i].visits[0])).format('MM.DD.YYYY') +'</span></div></div><br style="clear: left;" /> </div> <div class="user-details-wrapper">Arrived: '+ moment.unix((customers[i].arrivedAt)).format('HH:mm') +'<br>Number of past visits: '+ customers[i].visits.length +'<br>Birthday '+ moment.unix((customers[i].birthdate)).format('MM.DD.YYYY') +'<br></div> </div>');
 			
 			if (customers[i].isNew == true) {
@@ -22,6 +23,15 @@ function loadCustomersInStore(customers) {
 				$('.user-wrapper').last().removeClass('active');
 			}
 			
+			// check if customers birthday
+			if (isNewCustomer == true) {
+				$('.last-visit').last().hide();
+				$('.firsttimeuserbadge').last().show();
+			} else {
+				$('.last-visit').last().show();
+				$('.firsttimeuserbadge').last().hide();
+			}
+
 			if (isNewCustomer == true) {
 				$('.last-visit').last().hide();
 				$('.firsttimeuserbadge').last().show();
@@ -52,6 +62,8 @@ $( document ).ready(function() {
 
 	$(document).on('click', '.continuewithoutvoucherbutton', function(){
 		$('.overlay-background').hide();
+		$('#bill-image').hide();
+		$('#paybutton-image').hide();
 	});
 
 	$(document).on('click', '.popup-wrapper table td', function(){
