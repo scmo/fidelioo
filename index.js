@@ -40,7 +40,7 @@ christ = {
   "prename": "Tristan",
   "lastname": "Walker",
   "phone": "708-713-7227",
-  "birthdate": 1489280400,
+  "birthdate": 637239600,
   "cardnr": "44485 2646 8634 9331",
   "address": "Schiffbau",
   "place": "Zurich",
