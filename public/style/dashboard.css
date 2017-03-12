@@ -102,7 +102,7 @@ h1 {
 .bill-wrapper {
     width: 350px;
     float: right;
-    background: #aafed6;
+    /*background: #aafed6;*/
 }
 
 .paybutton-wrapper {
